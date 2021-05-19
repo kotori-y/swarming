@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 19:55:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-19 21:04:55
+ * @LastEditTime: 2021-05-19 21:46:18
  * @FilePath: \swarming\scripts\admetSar.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -19,7 +19,7 @@ async function visit(smiles) {
 
   let resp = await fetch(postUrl, {
     method: "POST",
-    timeout: 180000000,
+    timeout: 1800,
     body: JSON.stringify(body),
   });
   let html = await resp.text();

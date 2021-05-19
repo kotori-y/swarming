@@ -3,12 +3,12 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 20:55:07
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-19 21:05:48
+ * @LastEditTime: 2021-05-19 21:22:16
  * @FilePath: \swarming\scripts\record.js
  * @AuthorMail: kotori@cbdd.me
  */
 const readme = `\
-# admetMesh-Bot
+# Swarming
 ---
 ⏰ Attacked on ${new Date().toUTCString()}
 
