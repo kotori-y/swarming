@@ -48,6 +48,7 @@ jobs:
 
   record:
     needs: [ddos-1, ddos-2, ddos-3]
+    steps:
     - name: Update Readme
       run: node scripts/record.js > README.md
     - name: Commit change & Push
