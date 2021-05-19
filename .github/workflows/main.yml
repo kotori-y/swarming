@@ -48,6 +48,7 @@ jobs:
 
   record:
     needs: [ddos-1, ddos-2, ddos-3]
+    runs-on: ubuntu-latest
     steps:
     - name: Update Readme
       run: node scripts/record.js > README.md
