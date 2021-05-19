@@ -1,0 +1,59 @@
+name: ddos admetSar
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+
+  ddos-1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.13.0'
+    - name: Install dependencies
+      run: npm ci
+    - name: ddos
+      run: node scripts/admetSar.js
+  
+  ddos-2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.13.0'
+    - name: Install dependencies
+      run: npm ci
+    - name: ddos
+      run: node scripts/admetSar.js
+
+  ddos-3:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.13.0'
+    - name: Install dependencies
+      run: npm ci
+    - name: ddos
+      run: node scripts/admetSar.js
+
+  record:
+    needs: [ddos-1, ddos-2, ddos-3]
+    - name: Update Readme
+      run: node scripts/record.js > README.md
+    - name: Commit change & Push
+      run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am ":robot: update readme.md automatically"
+          git pull
+          git push
