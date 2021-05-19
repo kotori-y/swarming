@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 19:55:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-19 20:39:05
+ * @LastEditTime: 2021-05-19 21:04:55
  * @FilePath: \swarming\scripts\admetSar.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -28,7 +28,8 @@ async function visit(smiles) {
 
 (async () => {
   const smis = await load.loadSmi();
+  console.log("start")
   for (let i = 0; i < smis.length; i+= 20) {
-    visit(smis.slice(i, i+20))
+    await visit(smis.slice(i, i+20))
   }
 })();
