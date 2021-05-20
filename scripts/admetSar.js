@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 19:55:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-20 11:53:09
+ * @LastEditTime: 2021-05-20 11:58:41
  * @FilePath: \swarming\scripts\admetSar.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -26,8 +26,8 @@ async function visit(smiles) {
     });
     let html = await resp.text();
     console.log(JSON.parse(html)["result"]);
-  } catch (err) {
-    console.log(err);
+  } catch (e) {
+    console.log(":x: FAILED");
   }
 }
 
