@@ -3,12 +3,13 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 19:55:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-19 21:55:53
+ * @LastEditTime: 2021-05-20 11:53:09
  * @FilePath: \swarming\scripts\admetSar.js
  * @AuthorMail: kotori@cbdd.me
  */
 const fetch = require("node-fetch");
 const load = require("./load");
+const time = require("./time");
 
 async function visit(smiles) {
   try {
@@ -20,7 +21,7 @@ async function visit(smiles) {
 
     let resp = await fetch(postUrl, {
       method: "POST",
-      timeout: 1800,
+      timeout: 5000,
       body: JSON.stringify(body),
     });
     let html = await resp.text();
@@ -35,5 +36,6 @@ async function visit(smiles) {
   console.log("start");
   for (let i = 0; i < smis.length; i += 20) {
     await visit(smis.slice(i, i + 20));
+    await time.sleep(500)
   }
 })();
