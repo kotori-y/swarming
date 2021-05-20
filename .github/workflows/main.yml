@@ -3,7 +3,7 @@ name: ddos admetSar
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0,20,40 * * * *"
+    - cron: "30 * * * *"
 
 jobs:
   ddos-1:
