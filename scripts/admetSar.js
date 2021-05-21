@@ -3,15 +3,16 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 19:55:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-20 15:16:31
+ * @LastEditTime: 2021-05-21 08:48:51
  * @FilePath: \swarming\scripts\admetSar.js
  * @AuthorMail: kotori@cbdd.me
  */
 const fetch = require("node-fetch");
 const load = require("./load");
+const { sleep } = require("./time");
 const time = require("./time");
 
-async function visit(smiles) {
+async function visit(smiles, tryTimes=1) {
   try {
     const postUrl = "http://lmmd.ecust.edu.cn/admetsar2/result/";
     let body = {
@@ -27,6 +28,10 @@ async function visit(smiles) {
     let html = await resp.text();
     console.log(JSON.parse(html)["result"]);
   } catch (e) {
+    if (tryTimes<=5) {
+      await time.sleep(1000)
+      await visit(smiles, tryTimes++)
+    }
     console.log("❌ FAILED");
   }
 }

@@ -20,7 +20,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-2:
-    needs: ddos-1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -34,7 +33,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-3:
-    needs: ddos-2
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -48,7 +46,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-4:
-    needs: ddos-3
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -62,7 +59,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-5:
-    needs: ddos-4
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -76,7 +72,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-6:
-    needs: ddos-5
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -90,7 +85,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-7:
-    needs: ddos-6
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -104,7 +98,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-8:
-    needs: ddos-7
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -118,7 +111,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-9:
-    needs: ddos-8
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -132,7 +124,6 @@ jobs:
         run: node scripts/admetSar.js
 
   ddos-10:
-    needs: ddos-9
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -146,7 +137,19 @@ jobs:
         run: node scripts/admetSar.js
 
   record:
-    needs: ddos-10
+    needs:
+      [
+        ddos-1,
+        ddos-2,
+        ddos-3,
+        ddos-4,
+        ddos-5,
+        ddos-6,
+        ddos-7,
+        ddos-8,
+        ddos-9,
+        ddos-10,
+      ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
