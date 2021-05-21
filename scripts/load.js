@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 08:59:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-21 14:36:04
+ * @LastEditTime: 2021-05-21 14:41:09
  * @FilePath: \swarming\scripts\load.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -38,4 +38,4 @@ async function load(filePath = "path/to/file.any", encoding = "utf8") {
   return lines;
 }
 
-module.exports = { loadSmi };
+module.exports = { load };
