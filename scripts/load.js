@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 08:59:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-21 14:41:09
+ * @LastEditTime: 2021-05-21 14:51:38
  * @FilePath: \swarming\scripts\load.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -32,7 +32,7 @@ function shuffle(array) {
 async function load(filePath = "path/to/file.any", encoding = "utf8") {
   let data = fs.readFileSync(filePath, encoding);
   let lines = data.toString();
-  lines = lines.split("\r\n");
+  lines = lines.split("\n");
   lines = shuffle(lines);
   
   return lines;
