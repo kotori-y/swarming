@@ -1,0 +1,168 @@
+name: ddos chemDes
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "30 * * * *"
+
+jobs:
+  ddos-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-4:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-6:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-7:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-9:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  ddos-10:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Install dependencies
+        run: npm ci
+      - name: ddos
+        run: node scripts/chemDes.js
+
+  record:
+    needs:
+      [
+        ddos-1,
+        ddos-2,
+        ddos-3,
+        ddos-4,
+        ddos-5,
+        ddos-6,
+        ddos-7,
+        ddos-8,
+        ddos-9,
+        ddos-10,
+      ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.13.0"
+      - name: Update Readme
+        run: node scripts/record.js > README.md
+      - name: Commit change & Push
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am ":robot: update readme.md automatically"
+          git pull
+          git push
