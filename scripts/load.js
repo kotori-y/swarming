@@ -3,11 +3,11 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 08:59:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-19 20:34:29
+ * @LastEditTime: 2021-05-21 14:36:04
  * @FilePath: \swarming\scripts\load.js
  * @AuthorMail: kotori@cbdd.me
  */
-const fetch = require("node-fetch");
+const fs = require("fs");
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -29,21 +29,13 @@ function shuffle(array) {
   return array;
 }
 
-async function loadSmi() {
-  const url =
-    "https://raw.githubusercontent.com/kotori-y/admetMesh-bot/master/data/sample.smi";
-
-  const resp = await fetch(url, {
-    method: "GET",
-    timeout: 180000,
-  });
-
-  let smis = await resp.text();
-  smis = smis.split("\n");
-  smis = shuffle(smis)
-  // console.log(smis)
-  return smis;
+async function load(filePath = "path/to/file.any", encoding = "utf8") {
+  let data = fs.readFileSync(filePath, encoding);
+  let lines = data.toString();
+  lines = lines.split("\r\n");
+  lines = shuffle(lines);
+  
+  return lines;
 }
-
 
 module.exports = { loadSmi };

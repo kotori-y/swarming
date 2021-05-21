@@ -3,13 +3,12 @@
  * @Author: Kotori Y
  * @Date: 2021-05-19 19:55:47
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-21 08:48:51
+ * @LastEditTime: 2021-05-21 14:34:07
  * @FilePath: \swarming\scripts\admetSar.js
  * @AuthorMail: kotori@cbdd.me
  */
 const fetch = require("node-fetch");
 const load = require("./load");
-const { sleep } = require("./time");
 const time = require("./time");
 
 async function visit(smiles, tryTimes=1) {
@@ -37,7 +36,7 @@ async function visit(smiles, tryTimes=1) {
 }
 
 (async () => {
-  const smis = await load.loadSmi();
+  const smis = await load.loadSmi("data/example.smi");
   console.log("start");
   for (let i = 0; i < smis.length; i += 20) {
     await visit(smis.slice(i, i + 20));
