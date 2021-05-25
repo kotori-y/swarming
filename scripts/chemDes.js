@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-20 20:28:16
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-25 20:17:51
+ * @LastEditTime: 2021-05-25 20:37:09
  * @FilePath: \swarming\scripts\chemDes.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -38,7 +38,7 @@ async function visit(smiles, tryTimes = 1) {
     console.log(`[200] ${temp[temp.length - 1]}`);
     return;
   } catch (e) {
-    if (tryTimes <= 5) {
+    if (tryTimes < 2) {
       return await visit(smiles, tryTimes++);
     }
     console.log("[x] FAILED");
