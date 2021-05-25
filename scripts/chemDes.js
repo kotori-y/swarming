@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-20 20:28:16
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-25 17:53:08
+ * @LastEditTime: 2021-05-25 20:17:51
  * @FilePath: \swarming\scripts\chemDes.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -23,7 +23,7 @@ async function visit(smiles, tryTimes = 1) {
 
     let resp = await fetch(postUrl, {
       method: "POST",
-      timeout: 2000000000,
+      timeout: 60000,
       body: form,
     });
 
