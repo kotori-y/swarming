@@ -3,33 +3,54 @@
  * @Author: Kotori Y
  * @Date: 2021-05-20 20:28:16
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-21 10:06:42
+ * @LastEditTime: 2021-05-25 16:39:08
  * @FilePath: \swarming\scripts\chemDes.js
  * @AuthorMail: kotori@cbdd.me
  */
 const fetch = require("node-fetch");
 const load = require("./load");
 const time = require("./time");
-const fs = require("fs");
+const cheerio = require("cheerio");
 const FormData = require("form-data");
 
-async function visit(filePath = `path/to/file.smi`) {
-  const postUrl = "http://www.scbdd.com/chemopy_desc/chemopy-calc-list/";
+async function visit(smiles, tryTimes = 1) {
+  try {
+    const postUrl = "http://www.scbdd.com/chemopy_desc/index/";
 
-  const fileStream = fs.createReadStream(filePath);
-  const form = new FormData();
-  form.append("tempfile", fileStream);
-  form.append("check_box_d", "2D");
+    const form = new FormData();
+    form.append("Smiles", smiles);
+    form.append("check_box_d", "2D");
 
-  let resp = await fetch(postUrl, {
-    method: "POST",
-    timeout: 20000000,
-    body: form,
-  });
+    let resp = await fetch(postUrl, {
+      method: "POST",
+      timeout: 2000000000,
+      body: form,
+    });
 
-  await resp.text();
+    let html = await resp.text();
+    let $ = cheerio.load(html);
+    let table = $(".table-bordered tbody tr td");
+
+    let temp = [];
+    table.each((i) => {
+      temp.push(table.eq(i).text());
+    });
+    console.log(`[200] ${temp[temp.length - 1]}`);
+    return;
+  } catch (e) {
+    if (tryTimes <= 5) {
+      return await visit(smiles, tryTimes++);
+    }
+    console.log("[x] FAILED");
+    return;
+  }
 }
 
 (async () => {
-  await visit("../data/chemsar.smi");
+  const smis = await load.load("data/example.smi");
+  console.log("start");
+  for (let smi of smis) {
+    await visit(smi);
+    await time.sleep(500);
+  }
 })();
