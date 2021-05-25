@@ -51,7 +51,7 @@ async function visit(smiles, tryTimes = 1) {
   smis = smis.slice(0, 5)
   console.log("start");
   for (let smi of smis) {
-    await visit(smi);
+    visit(smi);
     await time.sleep(500);
   }
 })();
