@@ -3,7 +3,7 @@
  * @Author: Kotori Y
  * @Date: 2021-05-20 20:28:16
  * @LastEditors: Kotori Y
- * @LastEditTime: 2021-05-25 16:39:08
+ * @LastEditTime: 2021-05-25 16:43:38
  * @FilePath: \swarming\scripts\chemDes.js
  * @AuthorMail: kotori@cbdd.me
  */
@@ -47,7 +47,8 @@ async function visit(smiles, tryTimes = 1) {
 }
 
 (async () => {
-  const smis = await load.load("data/example.smi");
+  let smis = await load.load("data/example.smi");
+  smis = smis.slice(0, 5)
   console.log("start");
   for (let smi of smis) {
     await visit(smi);
