@@ -48,7 +48,7 @@ async function visit(smiles, tryTimes = 1) {
 
 (async () => {
   let smis = await load.load("data/example.smi");
-  smis = smis.slice(0, 5)
+  smis = smis.slice(0, 10)
   console.log("start");
   for (let smi of smis) {
     visit(smi);
